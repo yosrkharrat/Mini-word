@@ -1,19 +1,14 @@
-function getValues(){
-    var colorValue = document.getElementById("color").value;
-    var sizeValue = document.getElementById("size").value;
-    var police = document.getElementById("police").value;
-    return {
-        color: colorValue,
-        size: sizeValue,
-        police: police
-    }
+const testParagraph = document.querySelector("#testParagraph");
+const colorInput = document.querySelector("#color");
+const sizeInput = document.querySelector("#size");
+const policeSelect = document.querySelector("#police");
+
+function updateText() {
+    testParagraph.style.color = colorInput.value;
+    testParagraph.style.fontSize = sizeInput.value + "px";
+    testParagraph.style.fontFamily = policeSelect.value;
 }
 
-function editText(){
-    const values = getValues();
-    var p = document.getElementById("testParagraph");
-    p.style.fontSize = values.size + "px";
-    p.style.color = values.color;
-    p.style.fontFamily = values.police;
-
-}
+colorInput.addEventListener("input", updateText);
+sizeInput.addEventListener("input", updateText);
+policeSelect.addEventListener("change", updateText);
